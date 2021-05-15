@@ -13,7 +13,7 @@ $Global:Sales = "Sales"
 $Global:Accounting = "Accounting"
 
 #Domain Information
-$Global:Domain = "mayorsec.local"
+$Global:Domain = "";
 
 function ShowBanner {
     $banner  = @()
@@ -180,7 +180,7 @@ function AD-AddACL {
 }
 
 function badAcls {
-Write-Good "Granting $Global:ITAdmins Domain Admin rights."
+Write-Good "Granting $Global:ITAdmins GenericAll rights on Domain Admins."
 $DestinationGroup = Get-ADGroup -Identity "$Global:ITAdmins"
 $SourceGroup = Get-ADGroup -Identity "Domain Admins"
 AD-AddACL -Source $SourceGroup.sid -Destination $DestinationGroup.DistinguishedName -Rights "GenericAll"
@@ -196,7 +196,15 @@ AD-AddACL -Source $SourceGroup.sid -Destination $vulnAclUser.DistinguishedName -
 Write-Info "ExtendedRight granted to m.seitz for the $Global:Engineering group."
 }	
 
+function Invoke-ADGenerator {
+	Param(
+	[Parameter(Mandatory=$True)]
+	[ValidateNotNullOrEmpty()]
+	[System.String]
+	$DomainName
+)
 ShowBanner
+$Global:Domain = $DomainName
 AddADGroup
 Write-Good "Group creation completed."
 AddADUser
@@ -207,3 +215,4 @@ kerberoasting
 Write-Good "Kerberoastable service creation completed."
 badAcls
 Write-Good "ACL misconfigurations completed."
+}
