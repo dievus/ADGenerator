@@ -1,3 +1,19 @@
+function ShowBanner {
+    $banner  = @()
+    $banner+= $Global:Spacing + ''
+$banner+= $Global:Spacing + '    ___    ____     ______                           __            '
+$banner+= $Global:Spacing + '   /   |  / __ \   / ____/__  ____  ___  _________ _/ /_____  _____'
+$banner+= $Global:Spacing + '  / /| | / / / /  / / __/ _ \/ __ \/ _ \/ ___/ __ `/ __/ __ \/ ___/'
+$banner+= $Global:Spacing + ' / ___ |/ /_/ /  / /_/ /  __/ / / /  __/ /  / /_/ / /_/ /_/ / /    '
+$banner+= $Global:Spacing + '/_/  |_/_____/   \____/\___/_/ /_/\___/_/   \__,_/\__/\____/_/     '
+$banner+= $Global:Spacing + ''                                                                   
+$banner+= $Global:Spacing + 'Vulnerable Active Directory Domain Generator by The Mayor'
+$banner+= $Global:Spacing + ''
+	$banner | foreach-object {
+        Write-Host $_ -ForegroundColor "Yellow"
+	}
+}
+
 function Write-Good { param( $String ) Write-Host $Global:InfoLine $String $Global:InfoLine1 -ForegroundColor 'Green' }
 function Write-Info { param( $String ) Write-Host $Global:PlusLine  $String -ForegroundColor 'Gray'}
 $Global:Spacing = "`t"
@@ -14,22 +30,6 @@ $Global:Accounting = "Accounting"
 
 #Domain Information
 $Global:Domain = "";
-
-function ShowBanner {
-    $banner  = @()
-    $banner+= $Global:Spacing + ''
-$banner+= $Global:Spacing + '    ___    ____     ______                           __            '
-$banner+= $Global:Spacing + '   /   |  / __ \   / ____/__  ____  ___  _________ _/ /_____  _____'
-$banner+= $Global:Spacing + '  / /| | / / / /  / / __/ _ \/ __ \/ _ \/ ___/ __ `/ __/ __ \/ ___/'
-$banner+= $Global:Spacing + ' / ___ |/ /_/ /  / /_/ /  __/ / / /  __/ /  / /_/ / /_/ /_/ / /    '
-$banner+= $Global:Spacing + '/_/  |_/_____/   \____/\___/_/ /_/\___/_/   \__,_/\__/\____/_/     '
-$banner+= $Global:Spacing + ''                                                                   
-$banner+= $Global:Spacing + 'Vulnerable Active Directory Domain Generator by The Mayor'
-$banner+= $Global:Spacing + ''
-	$banner | foreach-object {
-        Write-Host $_ -ForegroundColor "Yellow"
-	}
-}
 
 function AddADGroup {
 Write-Good "Creating Domain Groups"
