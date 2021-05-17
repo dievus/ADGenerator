@@ -31,6 +31,25 @@ $Global:Accounting = "Accounting"
 #Domain Information
 $Global:Domain = "";
 
+function promoteUser {
+$username = ((gwmi win32_computersystem).username).split('\')[1]
+Write-Good "Promoting $username to appropriate Domain Administrative roles required for the course."
+Write-Info "Promoting $username to Enterprise Administrator."
+net group "Enterprise Admins" $username /add /domain
+Write-Info "Promoting $username to Domain Administrator."
+net group "Domain Admins" $username /add /domain
+Write-Info "Promoting $username to Group Policy Creator Owners."
+net group "Group Policy Creator Owners" $username /add /domain
+Write-Info "Promoting $username to Local Administrator (error output may occur - this is expected)."
+net localgroup "administrators" $username /add
+}
+
+function renameDC {
+$username = whoami
+Write-Good "Renaming the domain controller to DC01"
+Rename-computer -NewName "DC01" -DomainCredential $username
+}
+
 function AddADGroup {
 Write-Good "Creating Domain Groups"
 New-ADGroup -name $Global:Senior -GroupScope Global
@@ -205,6 +224,10 @@ function Invoke-ADGenerator {
 )
 ShowBanner
 $Global:Domain = $DomainName
+promoteUser
+Write-Good "Administrative privilege delegation completed."
+renameDC
+Write-Good "Domain controller renamed."
 AddADGroup
 Write-Good "Group creation completed."
 AddADUser
@@ -215,4 +238,5 @@ kerberoasting
 Write-Good "Kerberoastable service creation completed."
 badAcls
 Write-Good "ACL misconfigurations completed."
+Write-Good "Some changes require a restart to take effect. Restart your domain controller now."
 }
