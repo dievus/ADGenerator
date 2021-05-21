@@ -233,6 +233,44 @@ Save-NetGPO -GPOSession $GpoSessionName
 Write-Info "A GPO for PowerShell Remoting was created for authenticated users on the domain."
 }	
 
+function Set-WinRMPolicy {
+Write-Good "Configuring GPO policies to enable PowerShell remoting on hosts."
+    $domainGPO = Get-ADDomain
+    $forest = $domainGPO.Forest
+    $DN = $domainGPO.DistinguishedName
+    $GpoName = "Enable PSRemoting Desktops"
+    $TargetOU = $DN
+    $PolicyStoreName = "$forest\" + $GpoName
+    New-Gpo -Name $GpoName | New-Gplink -target $TargetOU
+
+    $domain = (Get-ADDomain).forest
+    $id = (Get-GPO -name $GpoName).id
+    $RemotingParams = @{
+            Name=$GpoName;
+            Key = 'HKLM\Software\Policies\Microsoft\Windows\WinRM\Service';
+            }
+    
+    try {
+        Set-GPRegistryValue @RemotingParams -ValueName 'AllowAutoConfig' -Value 1 -Type DWord
+        Set-GPRegistryValue @RemotingParams -ValueName 'IPv4Filter' -Value '*' -Type String
+        Set-GPRegistryValue @RemotingParams -ValueName 'IPv6Filter' -Value '*' -Type String
+        Write-Info "Registry setting for Powershell Remoting OK!"
+        }
+    catch { "Error enabling remoting policy" }
+
+    $ServiceParams = @{
+            Name=$GpoName;
+            Key = 'HKLM\SYSTEM\CurrentControlSet\Services\WinRM';
+            }
+    
+    try {
+        Set-GPRegistryValue @ServiceParams -ValueName 'Start' -Value 2 -Type DWord
+        Set-GPRegistryValue @ServiceParams -ValueName 'DelayedAutoStart' -Value 0 -Type DWord
+        Write-Info "Service setting for Powershell Remoting OK!"
+        }
+    catch { "Error enabling remoting policy" }
+}
+
 function Invoke-ADGenerator {
 	Param(
 	[Parameter(Mandatory=$True)]
@@ -258,5 +296,7 @@ badAcls
 Write-Good "ACL misconfigurations completed."
 PSRemote
 Write-Good "GPO configurations completed."
+Set-WinRMPolicy
+Write-Good "Domain-wide PowerShell Remoting GPO configuration completed."
 Write-Good "Some changes require a restart to take effect. Restart your domain controller now."
 }
