@@ -20,3 +20,6 @@ This will install the Windows Active Directory Domain Services toolset and gener
 ```Invoke-ADGenerator```
 
 This will generate the appropriate users, groups, permissions, configurations, and misconfigurations needed for the actual course.  
+
+
+For the nitpickers, yes, some of this code was inspired by other resources.  It's literally how coding works.
