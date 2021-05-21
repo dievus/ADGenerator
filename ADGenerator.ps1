@@ -215,6 +215,24 @@ AD-AddACL -Source $SourceGroup.sid -Destination $vulnAclUser.DistinguishedName -
 Write-Info "ExtendedRight granted to m.seitz for the $Global:Engineering group."
 }	
 
+function PSRemote {
+Write-Good "Configuring some GPO policies required for the domain."
+import-module grouppolicy
+$domain = Get-ADDomain
+$forest = $domain.Forest
+$DN = $domain.DistinguishedName
+
+$FwRule = "Allow WinRM TCP 5985 To Domain Joined Systems"
+$GpoName = "WinRM Firewall TCP 5985"
+$TargetOU = $DN
+$PolicyStoreName = "$forest\" + $GpoName
+New-Gpo -Name $GpoName | New-Gplink -target $TargetOU
+$GpoSessionName = Open-NetGPO –PolicyStore $PolicyStoreName
+New-NetFirewallRule -DisplayName $FwRule -Profile Any -Direction Inbound -GPOSession $GpoSessionName -PolicyStore $GpoName -Protocol TCP -LocalPort 5985
+Save-NetGPO -GPOSession $GpoSessionName
+Write-Info "A GPO for PowerShell Remoting was created for authenticated users on the domain."
+}	
+
 function Invoke-ADGenerator {
 	Param(
 	[Parameter(Mandatory=$True)]
@@ -238,5 +256,7 @@ kerberoasting
 Write-Good "Kerberoastable service creation completed."
 badAcls
 Write-Good "ACL misconfigurations completed."
+PSRemote
+Write-Good "GPO configurations completed."
 Write-Good "Some changes require a restart to take effect. Restart your domain controller now."
 }
