@@ -30,7 +30,6 @@ Write-Info "`n`nToolset installed.`n`n"
 
 function forestDeploy {
 Write-Good "Generating the domain. Make note of the domain name for the ADGenerator Script to be ran after the controller is built."
-Write-Info "`tExample - mayorsec.local"
 Install-ADDSForest -InstallDNS:$true
 Write-Info "`n`nDomain is generated. Restart the controller if not instructed."
 }
