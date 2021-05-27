@@ -298,5 +298,7 @@ PSRemote
 Write-Good "GPO configurations completed."
 Set-WinRMPolicy
 Write-Good "Domain-wide PowerShell Remoting GPO configuration completed."
-Write-Good "Some changes require a restart to take effect. Restart your domain controller now."
+Write-Good "Some changes require a restart to take effect. Restarting your domain controller in 30 seconds."
+Start-Sleep -Seconds 30
+Restart-Computer
 }
