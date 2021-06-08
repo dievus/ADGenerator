@@ -135,7 +135,7 @@ $lastname = "Seitz"
 $fullname = "{0} {1}" -f ($firstname, $lastname)
 $SamAccountName = ("{0}.{1}" -f ($firstname.Substring(0,1), $lastname)).ToLower()
 $principalname = "{0}.{1}" -f ($firstname.Substring(0,1), $lastname)
-$password = "Password123!"
+$password = "Phi11i35@44"
 New-ADUser -Name "$firstname $lastname" -GivenName $firstname -Surname $lastname -SamAccountName $SamAccountName -UserPrincipalName $principalname@$Global:Domain -AccountPassword (ConvertTo-SecureString $password -AsPlainText -Force) -PassThru | Enable-ADAccount
 Write-Info "$samAccountName added"
 $firstname = "Aaron"
@@ -143,7 +143,7 @@ $lastname = "Tarolli"
 $fullname = "{0} {1}" -f ($firstname, $lastname)
 $SamAccountName = ("{0}.{1}" -f ($firstname.Substring(0,1), $lastname)).ToLower()
 $principalname = "{0}.{1}" -f ($firstname.Substring(0,1), $lastname)
-$password = "Phi11i35@44"
+$password = "Password123!"
 New-ADUser -Name "$firstname $lastname" -GivenName $firstname -Surname $lastname -SamAccountName $SamAccountName -UserPrincipalName $principalname@$Global:Domain -AccountPassword (ConvertTo-SecureString $password -AsPlainText -Force) -PassThru | Enable-ADAccount
 Write-Info "$samAccountName added"
 $firstname = "Zane"
