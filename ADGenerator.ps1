@@ -257,7 +257,7 @@ $GpoName = "WinRM Firewall TCP 5985"
 $TargetOU = $DN
 $PolicyStoreName = "$forest\" + $GpoName
 New-Gpo -Name $GpoName | New-Gplink -target $TargetOU
-$GpoSessionName = Open-NetGPO –PolicyStore $PolicyStoreName
+$GpoSessionName = Open-NetGPO -PolicyStore $PolicyStoreName
 New-NetFirewallRule -DisplayName $FwRule -Profile Any -Direction Inbound -GPOSession $GpoSessionName -PolicyStore $GpoName -Protocol TCP -LocalPort 5985
 Save-NetGPO -GPOSession $GpoSessionName
 Write-Info "A GPO for PowerShell Remoting was created for authenticated users on the domain."
