@@ -102,7 +102,7 @@ $fullname = "{0} {1}" -f ($firstname, $lastname)
 $SamAccountName = ("{0}.{1}" -f ($firstname.Substring(0,1), $lastname)).ToLower()
 $principalname = "{0}.{1}" -f ($firstname.Substring(0,1), $lastname)
 $password = "H1dD3nV4ll3y!"
-New-ADUser -Name "$firstname $lastname" -GivenName $firstname -Surname $lastname -SamAccountName $SamAccountName -UserPrincipalName $principalname@$Global:Domain -AccountPassword (ConvertTo-SecureString $password -AsPlainText -Force) -PassThru | Enable-ADAccount
+New-ADUser -Name "$firstname $lastname" -GivenName $firstname -Surname $lastname -SamAccountName $SamAccountName -UserPrincipalName $principalname@$Global:Domain -Path "OU=Engineering,DC=mayorsec,DC=local" -AccountPassword (ConvertTo-SecureString $password -AsPlainText -Force) -PassThru | Enable-ADAccount
 Write-Info "$samAccountName added"
 Write-Info "Adding $samAccountName to $Global:Engineering Group"
 Add-ADGroupMember -Identity $Global:Engineering -Members $samAccountName
@@ -112,7 +112,7 @@ $fullname = "{0} {1}" -f ($firstname, $lastname)
 $SamAccountName = ("{0}.{1}" -f ($firstname.Substring(0,1), $lastname)).ToLower()
 $principalname = "{0}.{1}" -f ($firstname.Substring(0,1), $lastname)
 $password = "AhArGuY5Nm7U3!@"
-New-ADUser -Name "$firstname $lastname" -GivenName $firstname -Surname $lastname -SamAccountName $SamAccountName -UserPrincipalName $principalname@$Global:Domain -AccountPassword (ConvertTo-SecureString $password -AsPlainText -Force) -PassThru | Enable-ADAccount
+New-ADUser -Name "$firstname $lastname" -GivenName $firstname -Surname $lastname -SamAccountName $SamAccountName -UserPrincipalName $principalname@$Global:Domain -Path "OU=Engineering,DC=mayorsec,DC=local" -AccountPassword (ConvertTo-SecureString $password -AsPlainText -Force) -PassThru | Enable-ADAccount
 Write-Info "$samAccountName added"
 Write-Info "Adding $samAccountName to $Global:Engineering Group"
 Add-ADGroupMember -Identity $Global:Engineering -Members $samAccountName
@@ -122,17 +122,18 @@ $fullname = "{0} {1}" -f ($firstname, $lastname)
 $SamAccountName = ("{0}.{1}" -f ($firstname.Substring(0,1), $lastname)).ToLower()
 $principalname = "{0}.{1}" -f ($firstname.Substring(0,1), $lastname)
 $password = "L4k3LiV3L0ve!"
-New-ADUser -Name "$firstname $lastname" -GivenName $firstname -Surname $lastname -SamAccountName $SamAccountName -UserPrincipalName $principalname@$Global:Domain -AccountPassword (ConvertTo-SecureString $password -AsPlainText -Force) -PassThru | Enable-ADAccount
+New-ADUser -Name "$firstname $lastname" -GivenName $firstname -Surname $lastname -SamAccountName $SamAccountName -UserPrincipalName $principalname@$Global:Domain -Path "OU=Engineering,DC=mayorsec,DC=local" -AccountPassword (ConvertTo-SecureString $password -AsPlainText -Force) -PassThru | Enable-ADAccount
 Write-Info "$samAccountName added"
 Write-Info "Adding $samAccountName to $Global:Engineering Group"
 Add-ADGroupMember -Identity $Global:Engineering -Members $samAccountName
+Add-ADGroupMember -Identity "Group Policy Creator Owners" -Members $samAccountName
 $firstname = "Richard"
 $lastname = "Smith"
 $fullname = "{0} {1}" -f ($firstname, $lastname)
 $SamAccountName = ("{0}.{1}" -f ($firstname.Substring(0,1), $lastname)).ToLower()
 $principalname = "{0}.{1}" -f ($firstname.Substring(0,1), $lastname)
 $password = "Baseball123!"
-New-ADUser -Name "$firstname $lastname" -GivenName $firstname -Surname $lastname -SamAccountName $SamAccountName -UserPrincipalName $principalname@$Global:Domain -AccountPassword (ConvertTo-SecureString $password -AsPlainText -Force) -PassThru | Enable-ADAccount
+New-ADUser -Name "$firstname $lastname" -GivenName $firstname -Surname $lastname -SamAccountName $SamAccountName -UserPrincipalName $principalname@$Global:Domain -Path "OU=Engineering,DC=mayorsec,DC=local" -AccountPassword (ConvertTo-SecureString $password -AsPlainText -Force) -PassThru | Enable-ADAccount
 Write-Info "$samAccountName added"
 Write-Info "Adding $samAccountName to $Global:Engineering Group"
 Add-ADGroupMember -Identity $Global:Engineering -Members $samAccountName
@@ -142,7 +143,7 @@ $fullname = "{0} {1}" -f ($firstname, $lastname)
 $SamAccountName = ("{0}.{1}" -f ($firstname.Substring(0,1), $lastname)).ToLower()
 $principalname = "{0}.{1}" -f ($firstname.Substring(0,1), $lastname)
 $password = "FallOutBoy1!"
-New-ADUser -Name "$firstname $lastname" -GivenName $firstname -Surname $lastname -SamAccountName $SamAccountName -UserPrincipalName $principalname@$Global:Domain -AccountPassword (ConvertTo-SecureString $password -AsPlainText -Force) -PassThru | Enable-ADAccount
+New-ADUser -Name "$firstname $lastname" -GivenName $firstname -Surname $lastname -SamAccountName $SamAccountName -UserPrincipalName $principalname@$Global:Domain -Path "OU=Sales,DC=mayorsec,DC=local" -AccountPassword (ConvertTo-SecureString $password -AsPlainText -Force) -PassThru | Enable-ADAccount
 Write-Info "$samAccountName added"
 Write-Info "Adding $samAccountName to $Global:Sales"
 Add-ADGroupMember -Identity $Global:Sales -Members $samAccountName
@@ -152,7 +153,7 @@ $fullname = "{0} {1}" -f ($firstname, $lastname)
 $SamAccountName = ("{0}.{1}" -f ($firstname.Substring(0,1), $lastname)).ToLower()
 $principalname = "{0}.{1}" -f ($firstname.Substring(0,1), $lastname)
 $password = "Phi11i35@44"
-New-ADUser -Name "$firstname $lastname" -GivenName $firstname -Surname $lastname -SamAccountName $SamAccountName -UserPrincipalName $principalname@$Global:Domain -AccountPassword (ConvertTo-SecureString $password -AsPlainText -Force) -PassThru | Enable-ADAccount
+New-ADUser -Name "$firstname $lastname" -GivenName $firstname -Surname $lastname -SamAccountName $SamAccountName -UserPrincipalName $principalname@$Global:Domain -Path "OU=Engineering,DC=mayorsec,DC=local" -AccountPassword (ConvertTo-SecureString $password -AsPlainText -Force) -PassThru | Enable-ADAccount
 Write-Info "$samAccountName added"
 Write-Info "Adding $samAccountName to $Global:Engineering Group"
 Add-ADGroupMember -Identity $Global:Engineering -Members $samAccountName
@@ -162,7 +163,7 @@ $fullname = "{0} {1}" -f ($firstname, $lastname)
 $SamAccountName = ("{0}.{1}" -f ($firstname.Substring(0,1), $lastname)).ToLower()
 $principalname = "{0}.{1}" -f ($firstname.Substring(0,1), $lastname)
 $password = "Password123!"
-New-ADUser -Name "$firstname $lastname" -GivenName $firstname -Surname $lastname -SamAccountName $SamAccountName -UserPrincipalName $principalname@$Global:Domain -AccountPassword (ConvertTo-SecureString $password -AsPlainText -Force) -PassThru | Enable-ADAccount
+New-ADUser -Name "$firstname $lastname" -GivenName $firstname -Surname $lastname -SamAccountName $SamAccountName -UserPrincipalName $principalname@$Global:Domain -Path "OU=Sales,DC=mayorsec,DC=local" -AccountPassword (ConvertTo-SecureString $password -AsPlainText -Force) -PassThru | Enable-ADAccount
 Write-Info "$samAccountName added"
 Write-Info "Adding $samAccountName to $Global:Sales"
 Add-ADGroupMember -Identity $Global:Sales -Members $samAccountName
@@ -172,7 +173,7 @@ $fullname = "{0} {1}" -f ($firstname, $lastname)
 $SamAccountName = ("{0}.{1}" -f ($firstname.Substring(0,1), $lastname)).ToLower()
 $principalname = "{0}.{1}" -f ($firstname.Substring(0,1), $lastname)
 $password = "M0t0rH3Ad65^$#"
-New-ADUser -Name "$firstname $lastname" -GivenName $firstname -Surname $lastname -SamAccountName $SamAccountName -UserPrincipalName $principalname@$Global:Domain -AccountPassword (ConvertTo-SecureString $password -AsPlainText -Force) -PassThru | Enable-ADAccount
+New-ADUser -Name "$firstname $lastname" -GivenName $firstname -Surname $lastname -SamAccountName $SamAccountName -UserPrincipalName $principalname@$Global:Domain -Path "OU=Sales,DC=mayorsec,DC=local" -AccountPassword (ConvertTo-SecureString $password -AsPlainText -Force) -PassThru | Enable-ADAccount
 Write-Info "$samAccountName added"
 Write-Info "Adding $samAccountName to $Global:Sales"
 Add-ADGroupMember -Identity $Global:Sales -Members $samAccountName
@@ -234,15 +235,18 @@ Write-Good "Adding misconfigured ACL rule for the $Global:Engineering group."
 $DestinationGroup = Get-ADGroup -Identity $Global:Engineering
 $SourceGroup = Get-ADGroup -Identity $Global:ITAdmins
 AD-AddACL -Source $DestinationGroup.sid -Destination $SourceGroup.DistinguishedName -Rights "GenericAll"
-Write-Info "GenericAll rights granted to $Global:Engineering group for $Global:ITAdmins."
-Write-Good "Adding misconfigured ACL rule for Margaret Seitz to the $Global:Engineering group."
+Write-Info "Whoops! GenericAll rights granted to $Global:Engineering."
+Write-Good "Adding misconfigured ACL rule for Margaret Seitz."
 $vulnAclUser = Get-ADUser -Identity "m.seitz"
-$SourceGroup = Get-ADGroup -Identity $Global:ITAdmins
-AD-AddACL -Source $vulnAclUser.sid -Destination $SourceGroup.DistinguishedName -Rights "ExtendedRight"
-Write-Info "ExtendedRight granted to m.seitz for the $Global:ITAdmins group."
-$DestinationGroup = Get-ADGroup -Identity $Global:Engineering
-$SourceGroup = Get-ADGroup -Identity $Global:Sales
+$SourceUser = Get-ADUser -Identity "j.taylor"
+AD-AddACL -Source $vulnAclUser.sid -Destination $SourceUser.DistinguishedName -Rights "GenericAll"
+Write-Info "Whoops! GenericAll rights granted to m.seitz."
+Write-Good "Adding misconfigured ACL rule for the $Global:Sales."	
+$DestinationGroup = Get-ADGroup -Identity $Global:Sales
+$SourceGroup = Get-ADGroup -Identity $Global:Engineering
 AD-AddACL -Source $DestinationGroup.sid -Destination $SourceGroup.DistinguishedName -Rights "GenericAll"
+Write-Info "Whoops! GenericAll rights granted to $Global:Sales."
+
 }	
 
 function PSRemote {
