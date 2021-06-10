@@ -48,6 +48,7 @@ function renameDC {
 $username = whoami
 Write-Good "Renaming the domain controller to DC01"
 Rename-computer -NewName "DC01" -DomainCredential $username
+mkdir C:\Shared; new-smbshare -Name "Shared" -Path "C:\Shared" -ReadAccess "Users"
 }
 
 function AddADGroup {
