@@ -19,5 +19,5 @@ function executeScript {
 	$ComputerName
 )
 renamePC
-addPC
+Share
 }
