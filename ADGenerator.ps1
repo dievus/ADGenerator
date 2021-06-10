@@ -49,6 +49,7 @@ $username = whoami
 Write-Good "Renaming the domain controller to DC01"
 Rename-computer -NewName "DC01" -DomainCredential $username
 mkdir C:\Shared; new-smbshare -Name "Shared" -Path "C:\Shared" -ReadAccess "Users"
+wget https://github.com/dievus/ADGenerator/blob/main/nameGen.ps1 -outfile C:\Shared\nameGen.ps1
 }
 
 function AddADGroup {
