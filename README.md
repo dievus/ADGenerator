@@ -17,7 +17,7 @@ This will install the Windows Active Directory Domain Services toolset and gener
 
 ```. .\ADGenerator.ps1```
 
-```Invoke-ADGenerator```
+```Invoke-ADGenerator -DomainName <domainname>```
 
 This will generate the appropriate users, groups, permissions, configurations, and misconfigurations needed for the actual course.  
 
