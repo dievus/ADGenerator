@@ -1,4 +1,4 @@
-![MayorSec](/images/Mayorsec.png)
+![MayorSec](/images/mayorsec.PNG)
 
 # ADGenerator
 
