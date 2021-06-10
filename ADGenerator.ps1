@@ -241,7 +241,7 @@ $vulnAclUser = Get-ADUser -Identity "m.seitz"
 $SourceUser = Get-ADUser -Identity "j.taylor"
 AD-AddACL -Source $vulnAclUser.sid -Destination $SourceUser.DistinguishedName -Rights "GenericAll"
 Write-Info "Whoops! GenericAll rights granted to m.seitz."
-Write-Good "Adding misconfigured ACL rule for the $Global:Sales."	
+Write-Good "Adding misconfigured ACL rule for the $Global:Sales group."	
 $DestinationGroup = Get-ADGroup -Identity $Global:Sales
 $SourceGroup = Get-ADGroup -Identity $Global:Engineering
 AD-AddACL -Source $DestinationGroup.sid -Destination $SourceGroup.DistinguishedName -Rights "GenericAll"
