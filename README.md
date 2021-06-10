@@ -1,5 +1,7 @@
 # ADGenerator
 
+[[https://github.com/dievus/ADGenerator/blob/master/Images/Mayorsec.png|alt=Mayorsec]]
+
 This script will auto-generate the required users, groups, and permissions necessary for my upcoming domain pivoting course. ***THIS IS FOR A TO BE COMPLETED COURSE AND I WILL NOT BE PROVIDING ANYONE SUPPORT AT THIS POINT.  PLEASE STOP ASKING.***
 
 # Instructions
