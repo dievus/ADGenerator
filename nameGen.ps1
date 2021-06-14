@@ -25,4 +25,5 @@ function executeScript {
 )
 renamePC
 Share
+enableRDPRemoting
 }
