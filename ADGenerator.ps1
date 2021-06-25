@@ -99,6 +99,7 @@ New-ADUser -Name "$firstname $lastname" -GivenName $firstname -Surname $lastname
 Write-Info "$samAccountName added"
 Write-Info "Adding $samAccountName to $Global:ITAdmins Group"
 Add-ADGroupMember -Identity $Global:ITAdmins -Members $samAccountName
+Add-ADGroupMember -Identity "Administrators" -Members $samAccountName
 $firstname = "Jillian"
 $lastname = "Anthony"
 $fullname = "{0} {1}" -f ($firstname, $lastname)
