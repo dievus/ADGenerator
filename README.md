@@ -24,3 +24,5 @@ This will generate the appropriate users, groups, permissions, configurations, a
 
 
 For the nitpickers, yes, some of this code was inspired by other resources.  It's literally how coding works.
+
+Instruction is provided in course on how to utilize the netGen.ps1 script.  A later lesson covers cracking an NTLM hash which uses the included password file.
