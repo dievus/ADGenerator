@@ -24,6 +24,7 @@ This will install the Windows Active Directory Domain Services toolset and gener
 This will generate the appropriate users, groups, permissions, configurations, and misconfigurations needed for the actual course.  
 
 Once all scripts are ran and the workstations are joined, the following needs to be ran on DC01 from an elevated Powershell terminal to generate the unconstrained delegation configuration.
+
 ```Get-ADComputer -Identity Workstation-02 | Set-ADAccountControl -TrustedForDelegation $true```
 
 
