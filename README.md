@@ -13,7 +13,7 @@ In order to generate a functional domain controller and active directory, the li
 
 ```Invoke-ForestDeploy -DomainName <domain name>```
 
-This will install the Windows Active Directory Domain Services toolset and generate the actual domain.  Follow the instructions on screen, making note of the domain name used as this will be needed later.
+This will install the Windows Active Directory Domain Services toolset and generate the actual domain.  Follow the instructions on screen, making note of the domain name used as this will be needed later.  The scripts are hardcoded for mayorsec.local, and any deviation from that domain name will likely break the ADGenerator.ps1 functionality.  Making any modifications are on you.
 
 - ADGenerator.ps1
 
