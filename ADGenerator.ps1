@@ -207,6 +207,7 @@ net user $svc $kerb_pass /add /domain
 #New-ADServiceAccount -Name $svc -ServicePrincipalNames "mssql_svc/mssqlserver.$Global:domain" -RestrictToSingleComputer -AccountPassword (ConvertTo-SecureString $kerb_pass -AsPlainText -Force)
 #Set-ADServiceAccount mssql_svc -PrincipalsAllowedToDelegateToAccount (Get-ADComputer Workstation-01)
 Get-ADComputer -Identity Workstation-02 | Set-ADAccountControl -TrustedForDelegation $true
+Write-Info "Workstation-02 granted unconstrained delegation rights on DC01."
 setspn -a DC01/$svc.$Global:Domain:60111 $domainFront\$svc
 Write-Info "mssql_svc service account added"
 }
