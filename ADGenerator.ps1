@@ -47,7 +47,14 @@ net localgroup "administrators" $username /add
 function renameDC {
 $username = whoami
 Write-Good "Renaming the domain controller to DC01"
-Rename-computer -NewName "DC01" -DomainCredential $username
+$res = Rename-computer -NewName "DC01" -DomainCredential $username -PassThru
+if ($res.HasSucceded) {
+	Write-Good "Success!"
+} else {
+	Write-Info "Exiting, please revert VM to saved snapshot."
+	break	
+}
+
 mkdir C:\Shared; new-smbshare -Name "Shared" -Path "C:\Shared" -ReadAccess "Users"
 wget https://github.com/dievus/ADGenerator/archive/refs/heads/main.zip -outfile C:\Shared\adgenerator.zip
 Expand-Archive -Path C:\Shared\adgenerator.zip -DestinationPath C:\Shared\adgenerator
