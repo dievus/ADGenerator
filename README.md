@@ -3,7 +3,7 @@
 
 # ADGenerator
 
-This script will auto-generate the required users, groups, and permissions necessary for my Movement, Pivoting, and Persistence for Pentesters and Ethical Hackers Course.  You can get it on TCM-Academy using my link at https://academy.tcm-sec.com/courses/movement-pivoting-and-persistence?affcode=770707_4ss-lc9h or on Udemy at https://www.udemy.com/course/movement-pivoting-and-persistence/?referralCode=99A09396FE1258FC3A2A.
+This script will auto-generate the required users, groups, and permissions necessary for my Movement, Pivoting, and Persistence for Pentesters and Ethical Hackers Course.  You can get it on TCM-Academy using my link at https://academy.tcm-sec.com/courses/movement-pivoting-and-persistence?affcode=770707_4ss-lc9h.
 # Instructions
 
 In order to generate a functional domain controller and active directory, the listed PowerShell scripts need to be executed in the following order:
